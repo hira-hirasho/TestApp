@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生ページ</title>
+</head>
+
+<body>
+    <h1>登録情報</h1>
+
+    <div th:object="${student}">
+        <p th:text="|ログインID: *{loginId}|"></p>
+        <p th:text="|パスワード: *{password}|"></p>
+        <p th:text="|氏名: *{name}|"></p>
+        <p th:text="|性別: *{gender}|"></p>
+        <p th:text="|誕生日: *{birthday}|"></p>
+    </div>
+
+    <form th:action="@{/student/logout}" method="post">
+        <button>ログアウト</button>
+    </form>
+</body>
+
+</html>

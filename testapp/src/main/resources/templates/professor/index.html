@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>教授ページ</title>
+</head>
+
+<body>
+    <h1>登録情報</h1>
+
+    <div th:object="${professor}">
+        <p th:text="|ログインID: *{loginId}|"></p>
+        <p th:text="|パスワード: *{password}|"></p>
+        <p th:text="|氏名: *{name}|"></p>
+        <p th:text="|性別: *{gender}|"></p>
+    </div>
+
+    <form th:action="@{/professor/logout}" method="post">
+        <button>ログアウト</button>
+    </form>
+</body>
+
+</html>

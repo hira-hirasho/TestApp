@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>教授ページ</title>
+</head>
+
+<body>
+    <h1>教授ログイン</h1>
+
+    <form th:action="@{/professor/login}" method="post">
+        <input type="text" name="username" placeholder="ログインID"><br>
+        <input type="password" name="password" placeholder="パスワード"><br>
+        <input type="checkbox" id="remember-me" name="remember-me">
+        <label for="remember-me" th:text="ログインしたままにする"></label><br>
+        <button>ログイン</button>
+    </form>
+    <a href="/professor/register/register" th:text="新規登録はこちら"></a>
+</body>
+
+</html>

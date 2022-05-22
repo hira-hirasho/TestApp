@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生ページ</title>
+</head>
+
+<body>
+    <h1>新規アカウント登録</h1>
+
+    <div th:object="${student}">
+        <p th:text="|ログインID: *{loginId}|"></p>
+        <p th:text="|パスワード: *{password}|"></p>
+        <p th:text="|氏名: *{name}|"></p>
+        <p th:text="|性別: *{gender}|"></p>
+        <p th:text="|誕生日: *{birthday}|"></p>
+    </div>
+
+    <p>以上の内容で登録します。よろしいですか？</p>
+
+    <div>
+        <form th:action="@{/student/register/register}">
+            <button>修正</button>
+        </form>
+        <form th:action="@{/student/register/confirm}" method="post">
+            <button>登録</button>
+        </form>
+    </div>
+</body>
+
+</html>

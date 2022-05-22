@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生ページ</title>
+</head>
+
+<body>
+    <h1>新規アカウント登録</h1>
+
+    <form th:action="@{/student/register/register}" th:object="${student}" method="post">
+        <label for="loginId" th:text="ログインID"></label>
+        <input type="text" th:field="*{loginId}"><br>
+        <label for="password" th:text="パスワード"></label>
+        <input type="password" th:field="*{password}"><br>
+        <label for="name" th:text="氏名"></label>
+        <input type="text" th:field="*{name}"><br>
+        <label for="gender" th:text="性別"></label>
+        <select th:field="*{gender}">
+            <option th:value="0" th:text="選択しない"></option>
+            <option th:value="1" th:text="男"></option>
+            <option th:value="2" th:text="女"></option>
+            <option th:value="3" th:text="その他"></option>
+        </select><br>
+        <label for="birthday" th:text="誕生日"></label>
+        <input type="date" th:field="*{birthday}"><br>
+        <button>登録</button>
+    </form>
+</body>
+
+</html>

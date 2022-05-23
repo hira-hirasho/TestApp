@@ -1,6 +1,7 @@
 package com.example.testapp.controller.student;
 
 import com.example.testapp.model.Student;
+import com.example.testapp.repository.CourseMasterRepository;
 import com.example.testapp.repository.StudentMasterRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class StudentLoginController {
     @Autowired
-    private final StudentMasterRepository repository;
+    private final StudentMasterRepository sRepository;
+
+    @Autowired
+    private final CourseMasterRepository cRepository;
 
     @ModelAttribute
     public Student setUpStudent() {
@@ -35,8 +39,9 @@ public class StudentLoginController {
     }
 
     @GetMapping("")
-    public String login(Authentication loginUser, Model model) {
-        model.addAttribute("student", repository.findByLoginId(loginUser.getName()));
+    public String readStudentPage(Authentication loginUser, Model model) {
+        model.addAttribute("student", sRepository.findByLoginId(loginUser.getName()));
+        model.addAttribute("courseList", cRepository.findAll());
         return "/student/index";
     }
 

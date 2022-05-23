@@ -18,6 +18,18 @@
         <p th:text="|誕生日: *{birthday}|"></p>
     </div>
 
+    <h2>履修可能講義一覧</h2>
+    <table>
+        <tr>
+            <th>講義名</th>
+            <th>教授名</th>
+        </tr>
+        <tr th:each="course : ${courseList}">
+            <td th:text="${course.name}"></td>
+            <td th:text="${course.professor.name}"></td>
+        </tr>
+    </table>
+
     <form th:action="@{/student/logout}" method="post">
         <button>ログアウト</button>
     </form>

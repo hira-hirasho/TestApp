@@ -1,6 +1,7 @@
 package com.example.testapp.controller.professor;
 
 import com.example.testapp.model.Professor;
+import com.example.testapp.repository.CourseMasterRepository;
 import com.example.testapp.repository.ProfessorMasterRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProfessorLoginController {
     @Autowired
-    private final ProfessorMasterRepository repository;
+    private final ProfessorMasterRepository pRepository;
+
+    @Autowired
+    private final CourseMasterRepository cRepository;
 
     @ModelAttribute
     public Professor setUpProfessor() {
@@ -35,8 +39,10 @@ public class ProfessorLoginController {
     }
 
     @GetMapping("")
-    public String login(Authentication loginUser, Model model) {
-        model.addAttribute("professor", repository.findByLoginId(loginUser.getName()));
+    public String readProfessorPage(Authentication loginUser, Model model) {
+        Professor professor = pRepository.findByLoginId(loginUser.getName());
+        model.addAttribute("professor", professor);
+        model.addAttribute("courseList", cRepository.findByProfessor(professor));
         return "/professor/index";
     }
 

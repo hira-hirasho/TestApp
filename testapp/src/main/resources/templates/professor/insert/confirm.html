@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>教授ページ</title>
+</head>
+
+<body>
+    <h1>講義内容登録</h1>
+
+    <div th:object="${course}">
+        <p th:text="|講義名: *{name}|"></p>
+    </div>
+
+    <p>以上の内容で登録します。よろしいですか？</p>
+
+    <div>
+        <form th:action="@{/professor/insert/insert}">
+            <button>修正</button>
+        </form>
+        <form th:action="@{/professor/insert/confirm}" method="post">
+            <button>登録</button>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -17,6 +17,18 @@
         <p th:text="|性別: *{gender}|"></p>
     </div>
 
+    <h2>担当講義一覧</h2>
+    <table>
+        <tr>
+            <th>講義名</th>
+        </tr>
+        <tr th:each="course : ${courseList}">
+            <td th:text="${course.name}"></td>
+        </tr>
+    </table>
+
+    <a href="/professor/insert/insert" th:text="講義登録はこちら"></a>
+
     <form th:action="@{/professor/logout}" method="post">
         <button>ログアウト</button>
     </form>

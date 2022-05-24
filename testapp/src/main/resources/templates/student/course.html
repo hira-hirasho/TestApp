@@ -8,20 +8,22 @@
 </head>
 
 <body>
-    <h1>登録情報</h1>
-
-    <div th:object="${student}">
-        <p th:text="|ログインID: *{loginId}|"></p>
-        <p th:text="|パスワード: *{password}|"></p>
-        <p th:text="|氏名: *{name}|"></p>
-        <p th:text="|性別: *{gender}|"></p>
-        <p th:text="|誕生日: *{birthday}|"></p>
-    </div>
+    <h1>履修可能講義一覧</h1>
+    <table>
+        <tr>
+            <th>講義名</th>
+            <th>教授名</th>
+        </tr>
+        <tr th:each="course : ${courseList}">
+            <td th:text="${course.name}"></td>
+            <td th:text="${course.professor.name}"></td>
+        </tr>
+    </table>
 
     <table>
         <tr>
             <td>
-                <a href="/student/course" th:text="履修確認"></a>
+                <a href="/student" th:text="ユーザー情報確認"></a>
             </td>
             <td>
                 <form th:action="@{/student/logout}">

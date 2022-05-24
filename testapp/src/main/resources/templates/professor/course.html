@@ -8,14 +8,15 @@
 </head>
 
 <body>
-    <h1>登録情報</h1>
-
-    <div th:object="${professor}">
-        <p th:text="|ログインID: *{loginId}|"></p>
-        <p th:text="|パスワード: *{password}|"></p>
-        <p th:text="|氏名: *{name}|"></p>
-        <p th:text="|性別: *{gender}|"></p>
-    </div>
+    <h1>担当講義一覧</h1>
+    <table>
+        <tr>
+            <th>講義名</th>
+        </tr>
+        <tr th:each="course : ${courseList}">
+            <td th:text="${course.name}"></td>
+        </tr>
+    </table>
 
     <table>
         <tr>
@@ -23,7 +24,7 @@
                 <a href="/professor/insert/insert" th:text="講義登録はこちら"></a>
             </td>
             <td>
-                <a href="/professor/course" th:text="担当講義一覧"></a>
+                <a href="/professor" th:text="ユーザー情報確認"></a>
             </td>
             <td>
                 <form th:action="@{/professor/logout}">
@@ -32,6 +33,7 @@
             </td>
         </tr>
     </table>
+
 </body>
 
 </html>

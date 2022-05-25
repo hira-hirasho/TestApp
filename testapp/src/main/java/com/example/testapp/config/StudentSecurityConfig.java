@@ -48,12 +48,12 @@ public class StudentSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/student/login")
-                .defaultSuccessUrl("/student")
+                .defaultSuccessUrl("/student/course")
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/student/logout"))
-                .and()
-                .rememberMe();
+                .logoutRequestMatcher(new AntPathRequestMatcher("/student/logout"));
+        // .and()
+        // .rememberMe();
     }
 
     @Override

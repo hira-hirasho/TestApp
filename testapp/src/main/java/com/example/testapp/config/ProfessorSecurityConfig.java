@@ -46,12 +46,12 @@ public class ProfessorSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/professor/login")
-                .defaultSuccessUrl("/professor")
+                .defaultSuccessUrl("/professor/course")
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/professor/logout"))
-                .and()
-                .rememberMe();
+                .logoutRequestMatcher(new AntPathRequestMatcher("/professor/logout"));
+        // .and()
+        // .rememberMe();
     }
 
     @Override
